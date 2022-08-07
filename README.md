@@ -5,10 +5,10 @@ gef➤  x/60i 0x100054
    0x100056:    xor    ebx,ebx
 => 0x100058:    mov    ecx,0x100111
    0x10005d:    mov    dl,0xff
-   0x10005f:    int    0x80
+   0x10005f:    int    0x80 # read(stdin, buffer=0x100111, count = 255)
    0x100061:    xor    esi,esi
    0x100063:    cmp    esi,0x12
-   0x100066:    je     0x10007f
+   0x100066:    je     0x10007f # for loop that runs 0x12(18) times i think
    0x100068:    mov    al,BYTE PTR [esi+0x100111]
    0x10006e:    rol    al,0xd
    0x100071:    mov    bl,BYTE PTR [esi+0x100210]
@@ -16,7 +16,7 @@ gef➤  x/60i 0x100054
    0x100079:    jne    0x100088
    0x10007b:    inc    si
    0x10007d:    jmp    0x100063
-   0x10007f:    mov    WORD PTR ds:0x100234,0x1
+   0x10007f:    mov    WORD PTR ds:0x100234,0x1 # beginning of 18-time for loop
    0x100088:    mov    ebx,0x1
    0x10008d:    mov    eax,0x4
    0x100092:    cmp    WORD PTR ds:0x100234,0x1
@@ -38,7 +38,7 @@ gef➤  x/60i 0x100054
    0x1000cb:    add    bh,bh
    0x1000cd:    mov    BYTE PTR [esi],0x12
    0x1000d0:    add    bh,bh
-   0x1000d2:    int    0x21
+   0x1000d2:    int    0x21 # exit/return i think - https://stackoverflow.com/questions/12591673/whats-the-difference-between-using-int-0x20-and-int-0x21-ah-0x4c-to-exit-a-16
    0x1000d4:    xor    esi,esi
    0x1000d6:    cmp    esi,0x12
    0x1000d9:    je     0x1000ec
