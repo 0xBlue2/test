@@ -1,5 +1,5 @@
 # test
-
+chall link: https://static.cor.team/uploads/646804dc1464496e49422efa4ca83cf62f82f080e3d62a40f2188c97740d042d/m%3C3l.exe
 gef➤  x/60i 0x100054
    0x100054:    mov    al,0x3
    0x100056:    xor    ebx,ebx
